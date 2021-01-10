@@ -6,10 +6,11 @@ import org.keycloak.broker.oidc.mappers.UserAttributeMapper;
 public class SignicatUserAttributeMapper extends UserAttributeMapper {
 
     private static final String MAPPER_NAME = "signicat-user-attribute-mapper";
+    private static final String[] COMPATIBLE_PROVIDER = {SignicatIdentityProviderFactory.PROVIDER_ID};
 
     @Override
     public String[] getCompatibleProviders() {
-        return SignicatIdentityProviderFactory.COMPATIBLE_PROVIDER;
+        return COMPATIBLE_PROVIDER;
     }
 
     @Override
