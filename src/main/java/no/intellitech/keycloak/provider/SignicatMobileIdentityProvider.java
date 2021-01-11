@@ -9,19 +9,20 @@ import org.keycloak.models.KeycloakSession;
 
 import javax.ws.rs.core.UriBuilder;
 
-public class SignicatIdentityProvider extends KeycloakOIDCIdentityProvider
+public class SignicatMobileIdentityProvider extends KeycloakOIDCIdentityProvider
         implements SocialIdentityProvider<OIDCIdentityProviderConfig> {
 
     private static final String ARC_VALUE = "urn:signicat:oidc:method:nbid";
+    private static final String ARC_VALUE_MOBILE = "urn:signicat:oidc:method:nbid_mobil";
 
-    public SignicatIdentityProvider(KeycloakSession session, OIDCIdentityProviderConfig config) {
+    public SignicatMobileIdentityProvider(KeycloakSession session, OIDCIdentityProviderConfig config) {
         super(session, config);
     }
 
     @Override
     protected UriBuilder createAuthorizationUrl(AuthenticationRequest request) {
         UriBuilder uriBuilder = super.createAuthorizationUrl(request);
-        uriBuilder.queryParam(OAuth2Constants.ACR_VALUES, ARC_VALUE);
+        uriBuilder.queryParam(OAuth2Constants.ACR_VALUES, ARC_VALUE_MOBILE);
         logger.info("createAuthorizationUrl url: " + uriBuilder.toTemplate());
         return uriBuilder;
     }

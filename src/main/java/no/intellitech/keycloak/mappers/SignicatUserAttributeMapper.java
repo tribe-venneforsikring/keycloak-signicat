@@ -1,12 +1,12 @@
 package no.intellitech.keycloak.mappers;
 
-import no.intellitech.keycloak.provider.SignicatIdentityProviderFactory;
+import no.intellitech.keycloak.provider.SignicatMobileIdentityProviderFactory;
 import org.keycloak.broker.oidc.mappers.UserAttributeMapper;
 
 public class SignicatUserAttributeMapper extends UserAttributeMapper {
 
     private static final String MAPPER_NAME = "signicat-user-attribute-mapper";
-    private static final String[] COMPATIBLE_PROVIDER = {SignicatIdentityProviderFactory.PROVIDER_ID};
+    private static final String[] COMPATIBLE_PROVIDER = {SignicatMobileIdentityProviderFactory.PROVIDER_ID};
 
     @Override
     public String[] getCompatibleProviders() {

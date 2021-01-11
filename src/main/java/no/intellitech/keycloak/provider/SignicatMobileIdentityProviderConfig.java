@@ -3,13 +3,13 @@ package no.intellitech.keycloak.provider;
 import org.keycloak.broker.oidc.OIDCIdentityProviderConfig;
 import org.keycloak.models.IdentityProviderModel;
 
-class SignicatIdentityProviderConfig extends OIDCIdentityProviderConfig {
+class SignicatMobileIdentityProviderConfig extends OIDCIdentityProviderConfig {
 
-    SignicatIdentityProviderConfig(IdentityProviderModel identityProviderModel) {
+    SignicatMobileIdentityProviderConfig(IdentityProviderModel identityProviderModel) {
         super(identityProviderModel);
     }
 
-    SignicatIdentityProviderConfig() {
+    SignicatMobileIdentityProviderConfig() {
         super();
     }
 
