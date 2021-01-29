@@ -8,12 +8,17 @@ import org.keycloak.models.KeycloakSession;
 public class SignicatIdentityProviderFactory extends AbstractIdentityProviderFactory<SignicatIdentityProvider>
         implements SocialIdentityProviderFactory<SignicatIdentityProvider> {
 
-    public static final String PROVIDER_ID = "signicat-provider";
-    public static final String PROVIDER_NAME = "Signicat BankID";
+    public static final String PROVIDER_ID = "signicat-provider-v3";
+    public static final String PROVIDER_NAME = "Signicat BankID V3";
 
     @Override
     public String getName() {
         return PROVIDER_NAME;
+    }
+
+    @Override
+    public String getId() {
+        return PROVIDER_ID;
     }
 
     @Override
@@ -26,8 +31,4 @@ public class SignicatIdentityProviderFactory extends AbstractIdentityProviderFac
         return new SignicatIdentityProviderConfig();
     }
 
-    @Override
-    public String getId() {
-        return PROVIDER_ID;
-    }
 }

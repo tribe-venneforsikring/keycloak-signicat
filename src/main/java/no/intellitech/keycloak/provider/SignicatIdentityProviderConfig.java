@@ -13,5 +13,12 @@ class SignicatIdentityProviderConfig extends OIDCIdentityProviderConfig {
         super();
     }
 
+    public String getAcrValue() {
+        return getConfig().getOrDefault("acrValue", "");
+    }
+
+    public String getSignicatProfile() {
+        return getConfig().getOrDefault("signicat_profile", ""); // watercircles
+    }
 }
 

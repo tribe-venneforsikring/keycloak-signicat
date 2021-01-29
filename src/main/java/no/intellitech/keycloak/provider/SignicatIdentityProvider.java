@@ -12,18 +12,26 @@ import javax.ws.rs.core.UriBuilder;
 public class SignicatIdentityProvider extends KeycloakOIDCIdentityProvider
         implements SocialIdentityProvider<OIDCIdentityProviderConfig> {
 
-    private static final String ARC_VALUE = "urn:signicat:oidc:method:nbid urn:signicat:oidc:method:nbid-mobil";
+    // private static final String ARC_VALUE = "urn:signicat:oidc:method:nbid urn:signicat:oidc:method:nbid-mobil";
 
-    public SignicatIdentityProvider(KeycloakSession session, OIDCIdentityProviderConfig config) {
+    public SignicatIdentityProvider(KeycloakSession session, SignicatIdentityProviderConfig config) {
         super(session, config);
     }
 
     @Override
     protected UriBuilder createAuthorizationUrl(AuthenticationRequest request) {
         UriBuilder uriBuilder = super.createAuthorizationUrl(request);
-        uriBuilder.queryParam(OAuth2Constants.ACR_VALUES, ARC_VALUE);
-        uriBuilder.queryParam("signicat_profile", "watercircles");
+
+        logger.info("createAuthorizationUrl acr value: " + getSignicatConfig().getAcrValue());
+        logger.info("createAuthorizationUrl signicat profile value: " + getSignicatConfig().getSignicatProfile());
+
+        uriBuilder.queryParam(OAuth2Constants.ACR_VALUES, getSignicatConfig().getAcrValue());
+        uriBuilder.queryParam("signicat_profile", getSignicatConfig().getSignicatProfile());
         logger.info("createAuthorizationUrl url: " + uriBuilder.toTemplate());
         return uriBuilder;
+    }
+
+    public SignicatIdentityProviderConfig getSignicatConfig() {
+        return (SignicatIdentityProviderConfig) super.getConfig();
     }
 }
